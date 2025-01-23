@@ -1,65 +1,49 @@
 <?php
 include '../model/db.php';
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 $mydb = new mydb();
 $conobj = $mydb->openCon();
 
-$id = $fullName = $gender = $skills = $email = $phoneNumber = '';
+$id = $fullName = $gender = $skills = $email = $phoneNumber = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['update'])) {
     $id = $_POST['id'];
-    $fullName = trim($_POST['fullName']);
-    $gender = trim($_POST['gender']);
-    $skills = trim($_POST['skills']);
-    $email = trim($_POST['email']);
-    $phoneNumber = trim($_POST['phoneNumber']);
+    $fullName = $_POST['fullName'];
+    $gender = $_POST['gender'];
+    $skills = $_POST['skills'];
+    $email = $_POST['email'];
+    $phoneNumber = $_POST['phoneNumber'];
 
     if (empty($id) || empty($fullName) || empty($email)) {
-        echo "Error: ID, Full Name, and Email are required fields.";
+        echo "ID, Full Name, and Email are required.";
         exit;
     }
-
-    $sqlCheckEmail = "SELECT id FROM users WHERE email = ? AND id != ?";
-    $stmtCheckEmail = $conobj->prepare($sqlCheckEmail);
-    $stmtCheckEmail->bind_param("si", $email, $id);
-    $stmtCheckEmail->execute();
-    $resultCheckEmail = $stmtCheckEmail->get_result();
+    $sqlCheckEmail = "SELECT id FROM users WHERE email = '$email' AND id != '$id'";
+    $resultCheckEmail = $conobj->query($sqlCheckEmail);
 
     if ($resultCheckEmail->num_rows > 0) {
-        echo "Error: The email address '$email' is already in use by another user.";
+        echo "The email '$email' is already in use by another user.";
         exit;
     }
-    $stmtCheckEmail->close();
 
-   
-    $sqlUpdate = "UPDATE users SET fullName = ?, gender = ?, skills = ?, email = ?, phoneNumber = ? WHERE id = ?";
-    $stmt = $conobj->prepare($sqlUpdate);
+    $sqlUpdate = "UPDATE users SET 
+        fullName = '$fullName', 
+        gender = '$gender', 
+        skills = '$skills', 
+        email = '$email', 
+        phoneNumber = '$phoneNumber' 
+        WHERE id = '$id'";
 
-    if (!$stmt) {
-        die("Prepare failed: " . $conobj->error);
-    }
-
-    $stmt->bind_param("sssssi", $fullName, $gender, $skills, $email, $phoneNumber, $id);
-
-    if ($stmt->execute()) {
+    if ($conobj->query($sqlUpdate) === TRUE) {
         echo "User updated successfully.";
     } else {
-        echo "Error updating user: " . $stmt->error;
+        echo "Error updating user: " . $conobj->error;
     }
-    $stmt->close();
 
 } elseif (isset($_GET['id'])) {
     $id = $_GET['id'];
-
-  
-    $sqlFetch = "SELECT * FROM users WHERE id = ?";
-    $stmt = $conobj->prepare($sqlFetch);
-    $stmt->bind_param("i", $id);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    $sqlFetch = "SELECT * FROM users WHERE id = '$id'";
+    $result = $conobj->query($sqlFetch);
 
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
@@ -73,14 +57,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['update'])) {
         echo "User not found.";
         exit;
     }
-    $stmt->close();
 } else {
     echo "No user ID provided.";
     exit;
 }
 
 $mydb->closeCon($conobj);
-
 
 include '../view/edituser.php';
 ?>

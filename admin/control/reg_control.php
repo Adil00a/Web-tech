@@ -16,7 +16,6 @@ $authorization = $_REQUEST["authorization"] ?? [];
 if (strtolower($_SERVER["REQUEST_METHOD"]) == "post") {
     $errors = [];
 
-    // Validation
     if (empty($fullName)) {
         $errors[] = "Please enter your full name.";
     } elseif (strlen($fullName) > 40) {
@@ -65,3 +64,6 @@ if (strtolower($_SERVER["REQUEST_METHOD"]) == "post") {
     }
 }
 ?>
+<div>
+    <p>Already have an account? <a href="../view/login.php">Log In</a></p>
+</div>

@@ -1,6 +1,7 @@
 <html>
 <head>
     <title>Admin Registration</title>
+    <link rel = "stylesheet" type="text/css" href = "../CSS/mystyle.css">
 </head>
 <body>
     <form method="post" action="../control/reg_control.php">
@@ -9,27 +10,27 @@
         <table>
             <tr>
                 <td><label for="fullName">Full Name:</label></td>
-                <td><input type="text" id="fullName" name="fullName"></td>
+                <td><input type="text" id="fullName" name="fullName" class="input-field"></td>
             </tr>
             <tr>
                 <td><label for="password">password:</label></td>
-                <td><input type="pass" id="password" name="password"></td>
-            </tr>
+                <td><input type="pass" id="password" name="password"class="input-field"></td>
+            </tr> 
             <tr>
                 <td><label for="phoneNumber">Phone Number:</label></td>
-                <td><input type="text" id="phoneNumber" name="phoneNumber"></td>
+                <td><input type="text" id="phoneNumber" name="phoneNumber"class="input-field"></td>
             </tr>
             <tr>
                 <td><label for="email">Email:</label></td>
-                <td><input type="email" id="email" name="email"></td>
+                <td><input type="email" id="email" name="email"class="input-field"></td>
             </tr>
             <tr>
                 <td><label for="address">Address:</label></td>
-                <td><input type="text" id="address" name="address"></td>
+                <td><input type="text" id="address" name="address"class="input-field"></td>
             </tr>
             <tr>
                 <td><label for="dob">Date of Birth:</label></td>
-                <td><input type="date" id="dob" name="dob"></td>
+                <td><input type="date" id="para"></td>
             </tr>
             <tr>
             <td><label>Gender:</label></td>
@@ -43,19 +44,19 @@
 
             <tr>
                 <td><label for="workExperience">Work Experience (Years):</label></td>
-                <td><input type="text" id="workExperience" name="workExperience"></td>
+                <td><input type="text" id="workExperience" name="workExperience" class="input-field"></td>
             </tr>
             <tr>
                 <td><label for="previousJobTitles">Previous Job Titles:</label></td>
-                <td><input type="text" id="previousJobTitles" name="previousJobTitles"></td>
+                <td><input type="text" id="previousJobTitles" name="previousJobTitles"class="input-field"></td>
             </tr>
             <tr>
                 <td><label for="reference">Reference:</label></td>
-                <td><input type="text" id="reference" name="reference"></td>
+                <td><input type="text" id="reference" name="reference"class="input-field"></td>
             </tr>
             <tr>
                 <td><label for="education">Highest Level of Education:</label></td>
-                <td><input type="text" id="education" name="education"></td>
+                <td><input type="text" id="education" name="education"class="input-field"></td>
             </tr>
             <tr>
                 <td><label for="certificates">Relevant Certificates:</label></td>
@@ -92,8 +93,8 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="2" align="center">
-                    <input type="submit" value="Register">
+                <td >
+                    <input type="submit" value="Register" class="btnSubmit">
                 </td>
             </tr>
 </fieldset>
