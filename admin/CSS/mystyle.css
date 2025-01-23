@@ -1,0 +1,46 @@
+
+body {
+    background: lightblue
+}
+
+table {
+    border: 4px solid black;
+    margin: 20px;
+    padding:6px ;
+    background-color: white;
+}
+
+td {
+    padding: 10px;
+    text-align:left;
+}
+
+.input-field {
+    width: 120;
+    margin: 5px 0;
+    border: 1px solid black;
+}
+.btnSubmit {
+    background-color: green;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+select {
+    width:120;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    margin-right: 10px;
+    border: none;
+}
+#para{
+    margin: 5px
+}
+
