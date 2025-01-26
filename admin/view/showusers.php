@@ -1,26 +1,40 @@
-<html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Show Users</title>
+    <link rel="stylesheet" href="../CSS/showusers.css">
 </head>
 <body>
-    <form method="post" action="../control/showuser_control.php">
-        <label for="id">User ID:</label>
-        <input type="text" id="id" name="id" placeholder="Enter User ID">
+    <h1>Show Users</h1>
 
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" placeholder="Enter Name">
+    <form method="post" action="../control/showuser_control.php" onsubmit="return validateShowUsersForm()">
+        <fieldset>
+            <legend>Search Users</legend>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" placeholder="Enter Email">
+            <label for="id">User ID:</label>
+            <input type="text" id="id" name="id" placeholder="Enter User ID">
+            <p id="errorUserID" class="error"></p>
 
-        <label for="phone">Phone:</label>
-        <input type="text" id="phone" name="phone" placeholder="Enter Phone Number">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter Name">
+            <p id="errorName" class="error"></p>
 
-        <input type="submit" name="search" value="Search">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter Email">
+            <p id="errorEmail" class="error"></p>
+
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" placeholder="Enter Phone Number">
+            <p id="errorPhone" class="error"></p>
+
+            <input type="submit" name="search" value="Search">
+        </fieldset>
     </form>
 
     <table>
+        <caption>List of Registered Users</caption>
         <thead>
             <tr>
                 <th>ID</th>
@@ -34,8 +48,9 @@
         </thead>
         <tbody>
             <?php
-            if (isset($_POST['userData']) && !empty($_POST['userData'])) {
-                foreach ($_POST['userData'] as $data) {
+            // Check if user data is passed from the backend
+            if (isset($userData) && !empty($userData)) {
+                foreach ($userData as $data) {
                     echo "<tr>";
                     echo "<td>" . htmlspecialchars($data['id']) . "</td>";
                     echo "<td>" . htmlspecialchars($data['fullName']) . "</td>";
@@ -55,5 +70,7 @@
             ?>
         </tbody>
     </table>
+
+    <script src="../js/showusers.js"></script>
 </body>
 </html>

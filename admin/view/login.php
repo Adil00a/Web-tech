@@ -14,7 +14,7 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
     <div>
     <table>
         <h1>Login</h1>
-        <form method="post" action="../control/login_control.php">
+        <form method="post" action="../control/login_control.php" onsubmit="return validateLoginForm()">
             
             <tr>
             <td><label for="email">Email</label></td><br>
@@ -30,5 +30,6 @@ if (isset($_GET['success']) && $_GET['success'] == 1) {
 </table>
         </form>
     </div>
+    <script src="../js/login.js"></script>
 </body>
 </html>

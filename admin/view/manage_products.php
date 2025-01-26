@@ -1,21 +1,28 @@
-<?php
+<?php 
 $conn = new mysqli("localhost", "root", "", "seca");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
 $sql = "SELECT * FROM products";
 $result = $conn->query($sql);
 ?>
 
-<html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Products</title>
-    <link rel="stylesheet" type="text/css" href="../CSS/products_style.css">
- 
+    <link rel="stylesheet" type="text/css" href="../CSS/manage_products.css">
 </head>
 <body>
-    <h1>Products</h1>
+    <h1>Manage Products</h1>
+
+ 
+    <form method="GET" action="manage_products.php" onsubmit= "validateSearchForm()">
+        <input type="text" id="search" name="search" placeholder="Search by Product Name">
+        <p id="errorSearch" class="error"></p>
+        <input type="submit" value="Search">
+    </form>
     <table border="1">
         <tr>
             <th>Product ID</th>
@@ -35,7 +42,7 @@ $result = $conn->query($sql);
                 echo "<td>" . $row['Price'] . "</td>";
                 echo "<td>" . $row['Category'] . "</td>";
                 echo "<td>" . $row['Stock'] . "</td>";
-                echo "<td><img src='../admin/uploads/"  . $row['Product_images'] . "' alt='" . $row['Product_name'] . "' class='product-image'></td>";
+                echo "<td><img src='./img/" . $row['Product_images'] . "' alt='" . $row['Product_name'] . "' class='product-image'></td>";
                 echo "<td>
                         <form action='../control/control_products.php' method='post' style='display:inline;'>
                             <input type='hidden' name='product_id' value='" . $row['Product_id'] . "'>
@@ -50,10 +57,12 @@ $result = $conn->query($sql);
         }
         ?>
     </table>
-    <br>
+
+  
     <form action="../control/control_products.php" method="post">
         <button type="submit" name="action" value="add">Add Products</button>
     </form>
+    <script src = "../js/products.js"></script>
 </body>
 </html>
 

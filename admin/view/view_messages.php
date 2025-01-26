@@ -2,13 +2,15 @@
 <html>
 <head>
     <title>View Messages</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/view_messages.css">
 </head>
 <body>
 
 <h2>Contact Us Messages</h2>
-<form method="POST" action="../control/control_messages.php">
+<form method="POST" action="../control/control_messages.php" onsubmit = "return validateSearchForm()">
     <label for="id">Search by ID:</label>
     <input type="text" id="id" name="id" placeholder="Enter message ID">
+    <p id="errorID" class="error"></p>
     <input type="submit" name="search" value="Search">
 </form>
 <h3>Messages</h3>
@@ -24,6 +26,6 @@
     include '../control/control_messages.php';
     ?>
 </table>
-
+<script src = "../js/view_messages.js" > </script>
 </body>
 </html>

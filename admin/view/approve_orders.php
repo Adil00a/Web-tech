@@ -11,6 +11,7 @@ $result = $conn->query($sql);
 <html>
 <head>
     <title>Approve Orders</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/approve_orders.css">
 </head>
 <body>
     <h1>Approve Orders</h1>

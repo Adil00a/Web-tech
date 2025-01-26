@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Feedback Management</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/feedback.css">
 </head>
 <body>
 
