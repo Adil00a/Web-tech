@@ -1,0 +1,65 @@
+*{
+    background-color: rgb(230, 215, 250);
+}
+h1
+{
+    color:rgb(0, 128, 17);
+    margin-left:20px;}
+
+
+form {
+    width: 400px;
+    margin: 0 auto;
+    background-color: #ffffff52;
+    padding: 10px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.603);
+}
+
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+
+input[type="text"], input[type="email"], input[type="password"], select {
+    width: 320px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+
+button {
+    width: 80px;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.btnSubmit{
+    background-color: green;
+}
+.btnReset{
+    background-color: red;
+}
+.btnShape{
+    width: 120px;
+    margin: 10px;
+    border: white solid;
+    border-radius: 10px;
+}
+
